@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +17,12 @@ import dominio.ItemPedido;
 import dominio.ItemPizza;
 import dominio.Pedido;
 import dominio.Pizza;
+import servico.ClienteServico;
+import servico.IngredienteServico;
+import servico.ItemPedidoServico;
+import servico.ItemPizzaServico;
+import servico.PedidoServico;
+import servico.PizzaServico;
 
 @WebServlet("/Instanciacao")
 public class Instaciacao extends HttpServlet {
@@ -76,55 +78,57 @@ public class Instaciacao extends HttpServlet {
 			ItemPedido ipd50 = new ItemPedido(null, 1, pd5, p1);
 			ItemPedido ipd51 = new ItemPedido(null, 1, pd5, p2);
 			
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("meujpa");
-			EntityManager em = emf.createEntityManager();
+			ClienteServico cs = new ClienteServico();
+			PedidoServico ps = new PedidoServico();
+			ItemPedidoServico ipds = new ItemPedidoServico();
+			PizzaServico pzs = new PizzaServico();
+			ItemPizzaServico ipzs = new ItemPizzaServico();
+			IngredienteServico is = new IngredienteServico();
 			
-			em.getTransaction().begin();
+			cs.inserirAtualizar(c1);
+			cs.inserirAtualizar(c2);
+			cs.inserirAtualizar(c3);
 			
-			em.persist(c1);
-			em.persist(c2);
-			em.persist(c3);
-			em.persist(i1);
-			em.persist(i2);
-			em.persist(i3);
-			em.persist(i4);
-			em.persist(i5);
-			em.persist(p1);
-			em.persist(p2);
-			em.persist(p3);
-			em.persist(ipz10);
-			em.persist(ipz11);
-			em.persist(ipz12);
-			em.persist(ipz13);
-			em.persist(ipz14);
-			em.persist(ipz20);
-			em.persist(ipz21);
-			em.persist(ipz22);
-			em.persist(ipz23);
-			em.persist(ipz30);
-			em.persist(ipz31);
-			em.persist(ipz32);
-			em.persist(pd1);
-			em.persist(pd2);
-			em.persist(pd3);
-			em.persist(pd4);
-			em.persist(pd5);
-			em.persist(ipd10);
-			em.persist(ipd11);
-			em.persist(ipd20);
-			em.persist(ipd21);
-			em.persist(ipd30);
-			em.persist(ipd31);
-			em.persist(ipd40);
-			em.persist(ipd41);
-			em.persist(ipd50);
-			em.persist(ipd51);
+			is.inserirAtualizar(i1);
+			is.inserirAtualizar(i2);
+			is.inserirAtualizar(i3);
+			is.inserirAtualizar(i4);
+			is.inserirAtualizar(i5);
 			
+			pzs.inserirAtualizar(p1);
+			pzs.inserirAtualizar(p2);
+			pzs.inserirAtualizar(p3);
 			
+			ipzs.inserirAtualizar(ipz10);
+			ipzs.inserirAtualizar(ipz11);
+			ipzs.inserirAtualizar(ipz12);
+			ipzs.inserirAtualizar(ipz13);
+			ipzs.inserirAtualizar(ipz14);
+			ipzs.inserirAtualizar(ipz20);
+			ipzs.inserirAtualizar(ipz21);
+			ipzs.inserirAtualizar(ipz22);
+			ipzs.inserirAtualizar(ipz23);
+			ipzs.inserirAtualizar(ipz30);
+			ipzs.inserirAtualizar(ipz31);
+			ipzs.inserirAtualizar(ipz32);
 			
-			em.getTransaction().commit();
-			em.close();
-			emf.close();
+			ps.inserirAtualizar(pd1);
+			ps.inserirAtualizar(pd2);
+			ps.inserirAtualizar(pd3);
+			ps.inserirAtualizar(pd4);
+			ps.inserirAtualizar(pd5);
+			
+			ipds.inserirAtualizar(ipd10);
+			ipds.inserirAtualizar(ipd11);
+			ipds.inserirAtualizar(ipd20);
+			ipds.inserirAtualizar(ipd21);
+			ipds.inserirAtualizar(ipd30);
+			ipds.inserirAtualizar(ipd31);
+			ipds.inserirAtualizar(ipd40);
+			ipds.inserirAtualizar(ipd41);
+			ipds.inserirAtualizar(ipd50);
+			ipds.inserirAtualizar(ipd51);
+			
 			
 			response.getWriter().append("Pronto");
 			
