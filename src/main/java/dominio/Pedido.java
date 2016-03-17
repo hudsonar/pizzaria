@@ -117,13 +117,10 @@ public class Pedido implements Serializable{
 	}
 	
 	public BigDecimal valorTotal(){
-		BigDecimal resultado = new BigDecimal("0.00");
 		BigDecimal soma = new BigDecimal("0.00");
 		for(ItemPedido ipd : itens){
-			BigDecimal quant = new BigDecimal(ipd.getQuantidade());
-			soma = quant.multiply(ipd.getPizza().valorTotal());
-			resultado = resultado.add(soma);
+			soma = soma.add(ipd.subTotal());
 		}
-		return resultado;
+		return soma;
 	}
 }

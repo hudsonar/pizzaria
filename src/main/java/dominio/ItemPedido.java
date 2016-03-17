@@ -106,9 +106,7 @@ public class ItemPedido implements Serializable{
 	}
 	
 	public BigDecimal subTotal(){
-		BigDecimal soma = new BigDecimal("0.00");
 		BigDecimal temp = new BigDecimal(this.getQuantidade());
-		soma = pizza.valorTotal().multiply(temp);
-		return soma;
+		return pizza.valorTotal().multiply(temp);
 	}
 }
