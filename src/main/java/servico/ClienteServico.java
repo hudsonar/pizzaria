@@ -19,7 +19,7 @@ public class ClienteServico {
 		try {
 			Cliente aux = dao.buscaCpfExato(x.getCpf());
 			if(aux != null){
-				throw new ServicoException("Já exite um artista com esse nome!", 1);
+				throw new ServicoException("Já exite um cliente com esse CPF!", 1);
 			}
 			
 			Transaction.begin();
@@ -37,7 +37,7 @@ public class ClienteServico {
 		try {
 			Cliente aux = dao.buscaCpfExatoDiferente(x.getCodCliente(), x.getCpf());
 			if(aux != null){
-				throw new ServicoException("Já exite um artista com esse nome!", 1);
+				throw new ServicoException("Já exite um cliente com esse CPF!", 1);
 			}
 			
 			Transaction.begin();

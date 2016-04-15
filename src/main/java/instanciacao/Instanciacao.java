@@ -34,9 +34,9 @@ public class Instanciacao extends HttpServlet {
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			
-			Cliente c1 = new Cliente(null, "Jose Humberto", "josej@hotmail.com", "001.001.001-01", "32000001", sdf.parse("01/01/2001"), new BigDecimal("300.00"));
-			Cliente c2 = new Cliente(null, "Joao Pedro", "jp@hotmail.com", "002.002.002-02", "32000002", sdf.parse("02/02/2000"), new BigDecimal("550.00"));
-			Cliente c3 = new Cliente(null, "Luiz Otavio", "otaviol@hotmail.com", "003.003.003-03", "32000003", sdf.parse("03/03/1995"), new BigDecimal("1110.00"));
+			Cliente c1 = new Cliente(null, "Jose Humberto", "josej@hotmail.com", "00100100101", "32000001", sdf.parse("01/01/2001"), new BigDecimal("300.00"));
+			Cliente c2 = new Cliente(null, "Joao Pedro", "jp@hotmail.com", "00200200202", "32000002", sdf.parse("02/02/2000"), new BigDecimal("550.00"));
+			Cliente c3 = new Cliente(null, "Luiz Otavio", "otaviol@hotmail.com", "00300300303", "32000003", sdf.parse("03/03/1995"), new BigDecimal("1110.00"));
 			
 			Ingrediente i1 = new Ingrediente(null, "Calabresa", new BigDecimal("7.00"));
 			Ingrediente i2 = new Ingrediente(null, "Bacon", new BigDecimal("10.00"));
@@ -62,10 +62,10 @@ public class Instanciacao extends HttpServlet {
 			ItemPizza ipz32 = new ItemPizza(null, p3, i3);
 			
 			Pedido pd1 = new Pedido(null, sdf.parse("09/03/2016"), c1);
-			Pedido pd2 = new Pedido(null, sdf.parse("01/03/2016"), c1);
-			Pedido pd3 = new Pedido(null, sdf.parse("05/03/2016"), c2);
-			Pedido pd4 = new Pedido(null, sdf.parse("03/03/2016"), c3);
-			Pedido pd5 = new Pedido(null, sdf.parse("04/03/2016"), c2);
+			Pedido pd2 = new Pedido(null, sdf.parse("01/01/2016"), c1);
+			Pedido pd3 = new Pedido(null, sdf.parse("05/02/2016"), c2);
+			Pedido pd4 = new Pedido(null, sdf.parse("28/03/2016"), c3);
+			Pedido pd5 = new Pedido(null, sdf.parse("01/03/2016"), c2);
 			
 			ItemPedido ipd10 = new ItemPedido(null, 2, pd1, p1);
 			ItemPedido ipd11 = new ItemPedido(null, 1, pd1, p3);

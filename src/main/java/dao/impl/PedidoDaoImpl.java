@@ -50,7 +50,7 @@ public class PedidoDaoImpl implements PedidoDao {
 		String jpql = "SELECT x FROM Pedido x WHERE x.data >= :p1 AND x.data <= :p2";
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", dataMin);
-		query.setParameter("p1", dataMax);
+		query.setParameter("p2", dataMax);
 		return query.getResultList();
 		
 	}

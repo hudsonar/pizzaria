@@ -56,7 +56,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Cliente buscaCpfExatoDiferente(Integer codigo, String cpf){
-		String jpql = "SELECT x FROM Cliente x WHERE x.codCliente <> :p0 x.cpf = :p1";
+		String jpql = "SELECT x FROM Cliente x WHERE x.codCliente <> :p0 AND x.cpf = :p1";
 		Query query = em.createQuery(jpql);
 		query.setParameter("p0", codigo);
 		query.setParameter("p1", cpf);

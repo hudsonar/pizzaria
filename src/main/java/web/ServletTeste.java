@@ -30,8 +30,8 @@ public class ServletTeste extends HttpServlet {
 		PedidoServico ps = new PedidoServico();
 		ItemPedidoServico is = new ItemPedidoServico();
 		PizzaServico pzs = new PizzaServico();
-		
 /*		
+		
 		//Tentando inserir um cliente com nome  repetido:
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Cliente c1 = null;
@@ -49,11 +49,13 @@ public class ServletTeste extends HttpServlet {
 			response.getWriter().append(e.getMessage());
 		}
 
+*/
+/*
 		
 		//Tentando atualizar um cliente
 		Cliente c1 = cs.buscar(1);
 		try{
-			c1.setRenda(c1.getRenda().add(new BigDecimal("10.00")));
+			c1.setRenda(c1.getRenda().add(new BigDecimal("10.97")));
 			cs.atualizar(c1);
 			response.getWriter().append("Renda atualizada!");
 		}
@@ -61,6 +63,8 @@ public class ServletTeste extends HttpServlet {
 			response.getWriter().append(e.getMessage());
 		}
 
+*/		
+/*
 		
 		//Tentando atualizar cliente
 		Cliente c1 = cs.buscar(1);
@@ -73,6 +77,8 @@ public class ServletTeste extends HttpServlet {
 			response.getWriter().append(e.getMessage());
 		}
 
+*/
+/*
 		
 		//Tentando inserir um Item pedido nao repetido
 		Pizza pz1 = pzs.buscar(1);
@@ -86,6 +92,8 @@ public class ServletTeste extends HttpServlet {
 			response.getWriter().append(e.getMessage());
 		}
 
+*/
+/*
 		
 		//Tentando inserir um Item pedido repetido
 		Pizza pz1 = pzs.buscar(1);
@@ -99,6 +107,8 @@ public class ServletTeste extends HttpServlet {
 			response.getWriter().append(e.getMessage());
 		}
 
+*/
+/*
 		
 		//Realizando a consulta
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
