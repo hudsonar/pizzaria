@@ -2,9 +2,9 @@ package servico;
 
 import java.util.List;
 
-import dao.IngredienteDao;
 import dao.DaoFactory;
-import dao.impl.EM;
+import dao.IngredienteDao;
+import dao.Transaction;
 import dominio.Ingrediente;
 
 public class IngredienteServico {
@@ -16,14 +16,29 @@ public class IngredienteServico {
 	}
 	
 	public void inserirAtualizar(Ingrediente x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getlocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
+
 	}
 	public void excluir(Ingrediente x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getlocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
 	}
 	public Ingrediente buscar(int cod){
 		return dao.buscar(cod);

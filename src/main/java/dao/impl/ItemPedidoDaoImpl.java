@@ -7,6 +7,8 @@ import javax.persistence.Query;
 
 import dao.ItemPedidoDao;
 import dominio.ItemPedido;
+import dominio.Pedido;
+import dominio.Pizza;
 
 public class ItemPedidoDaoImpl implements ItemPedidoDao {
 	
@@ -39,8 +41,31 @@ public class ItemPedidoDaoImpl implements ItemPedidoDao {
 	@Override
 	public List<ItemPedido> buscarTodos() {
 		String jpql = "SELECT x FROM ItemPedido x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ItemPedido buscarExato(Pizza pizza, Pedido pedido){
+		String jpql = "SELECT x FROM ItemPedido x WHERE x.pizza = :p1 AND x.pedido = :p2";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", pizza);
+		query.setParameter("p2", pedido);
+		List<ItemPedido> aux = query.getResultList();
+		return (aux.size() > 0)? aux.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ItemPedido buscarExatoDiferente(Integer codigo, Pizza pizza, Pedido pedido){
+		String jpql = "SELECT x FROM ItemPedido x WHERE x.codItemPedido <> :p0 AND x.pizza = :p1 AND x.pedido = :p2";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p0", codigo);
+		query.setParameter("p1", pizza);
+		query.setParameter("p2", pedido);
+		List<ItemPedido> aux = query.getResultList();
+		return (aux.size() > 0)? aux.get(0) : null;
 	}
 
 }

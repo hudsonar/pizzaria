@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -39,8 +40,18 @@ public class PedidoDaoImpl implements PedidoDao {
 	@Override
 	public List<Pedido> buscarTodos() {
 		String jpql = "SELECT x FROM Pedido x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pedido> buscarPorData(Date dataMin, Date dataMax){
+		String jpql = "SELECT x FROM Pedido x WHERE x.data >= :p1 AND x.data <= :p2";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", dataMin);
+		query.setParameter("p1", dataMax);
+		return query.getResultList();
+		
+	}
 }

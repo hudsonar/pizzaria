@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Date;
 import java.util.List;
 
 import dominio.Pedido;
@@ -9,4 +10,6 @@ public interface PedidoDao {
 	public void excluir(Pedido x);
 	public Pedido buscar(int cod);
 	public List<Pedido> buscarTodos();
+	
+	public List<Pedido> buscarPorData(Date dataMin,Date dataMax);
 }

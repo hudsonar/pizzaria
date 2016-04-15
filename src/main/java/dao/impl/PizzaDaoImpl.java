@@ -39,7 +39,7 @@ public class PizzaDaoImpl implements PizzaDao {
 	@Override
 	public List<Pizza> buscarTodos() {
 		String jpql = "SELECT x FROM Pizza x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

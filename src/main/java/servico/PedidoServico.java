@@ -1,10 +1,11 @@
 package servico;
 
+import java.util.Date;
 import java.util.List;
 
-import dao.PedidoDao;
 import dao.DaoFactory;
-import dao.impl.EM;
+import dao.PedidoDao;
+import dao.Transaction;
 import dominio.Pedido;
 
 public class PedidoServico {
@@ -16,20 +17,39 @@ public class PedidoServico {
 	}
 	
 	public void inserirAtualizar(Pedido x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getlocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
+
 	}
 	public void excluir(Pedido x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getlocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
 	}
 	public Pedido buscar(int cod){
 		return dao.buscar(cod);
 	}
 	public List<Pedido> buscarTodos(){
 		return dao.buscarTodos();
+	}
+	
+	public List<Pedido> buscarPorData(Date dataMin, Date dataMax){
+		return dao.buscarPorData(dataMin, dataMax);
 	}
 	
 }

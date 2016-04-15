@@ -2,9 +2,9 @@ package servico;
 
 import java.util.List;
 
-import dao.PizzaDao;
 import dao.DaoFactory;
-import dao.impl.EM;
+import dao.PizzaDao;
+import dao.Transaction;
 import dominio.Pizza;
 
 public class PizzaServico {
@@ -16,14 +16,29 @@ public class PizzaServico {
 	}
 	
 	public void inserirAtualizar(Pizza x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getlocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
+
 	}
 	public void excluir(Pizza x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getlocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
 	}
 	public Pizza buscar(int cod){
 		return dao.buscar(cod);

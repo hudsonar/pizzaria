@@ -4,32 +4,80 @@ import java.util.List;
 
 import dao.ClienteDao;
 import dao.DaoFactory;
-import dao.impl.EM;
+import dao.Transaction;
 import dominio.Cliente;
 
 public class ClienteServico {
-	
+
 	private ClienteDao dao;
-	
-	public ClienteServico(){
+
+	public ClienteServico() {
 		dao = DaoFactory.criarClienteDao();
 	}
+
+	public void inserir(Cliente x) throws ServicoException {
+		try {
+			Cliente aux = dao.buscaCpfExato(x.getCpf());
+			if(aux != null){
+				throw new ServicoException("Já exite um artista com esse nome!", 1);
+			}
+			
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
+	}
 	
-	public void inserirAtualizar(Cliente x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.inserirAtualizar(x);
-		EM.getlocalEm().getTransaction().commit();
+	public void atualizar(Cliente x) throws ServicoException {
+		try {
+			Cliente aux = dao.buscaCpfExatoDiferente(x.getCodCliente(), x.getCpf());
+			if(aux != null){
+				throw new ServicoException("Já exite um artista com esse nome!", 1);
+			}
+			
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
 	}
-	public void excluir(Cliente x){
-		EM.getlocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getlocalEm().getTransaction().commit();
+	
+	public void excluir(Cliente x) throws ServicoException {
+		try {
+			x = dao.buscar(x.getCodCliente());
+			if(!x.getPedidos().isEmpty()){
+				throw new ServicoException("Este cliente possui pedidos!", 2);
+			}
+			
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		} catch (RuntimeException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
+			System.out.println("ERRO: " + e.getMessage());
+		}
 	}
-	public Cliente buscar(int cod){
+
+	public Cliente buscar(int cod) {
 		return dao.buscar(cod);
 	}
-	public List<Cliente> buscarTodos(){
+
+	public List<Cliente> buscarTodos() {
 		return dao.buscarTodos();
 	}
-	
+
+	public List<Cliente> buscarPorNome(String trecho){
+		return dao.buscarPorNome(trecho);
+	}
 }

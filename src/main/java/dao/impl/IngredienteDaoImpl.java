@@ -39,7 +39,7 @@ public class IngredienteDaoImpl implements IngredienteDao {
 	@Override
 	public List<Ingrediente> buscarTodos() {
 		String jpql = "SELECT x FROM Ingrediente x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 
