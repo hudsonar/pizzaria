@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO8859-1"
+	pageEncoding="ISO8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO8859-1">
 <title>Sistema Pizzaria</title>
 
 <!-- Bootstrap core CSS -->
@@ -28,7 +28,7 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Erro</h1>
+			<h1>Erro!</h1>
 		</div>
 		<p class="lead">${msg}</p>
 	</div>

@@ -19,7 +19,11 @@ public class Instanciar {
 		s = request.getParameter("codCliente");
 
 		if (s != null && !s.isEmpty()) {
-			aux.setCodCliente(Integer.parseInt(s));;
+			try{
+				aux.setCodCliente(Integer.parseInt(s));
+			}catch (NumberFormatException e){
+				e.printStackTrace();
+			}
 		}		
 		
 		s = request.getParameter("nome");
@@ -37,13 +41,21 @@ public class Instanciar {
 		s = request.getParameter("cpf");
 
 		if (s != null && !s.isEmpty()) {
-			aux.setCpf(s);
+			try{
+				aux.setCpf(s);
+			} catch (NumberFormatException e){
+				e.printStackTrace();
+			}
 		}
 		
 		s = request.getParameter("telefone");
 
 		if (s != null && !s.isEmpty()) {
-			aux.setTelefone(s);;
+			try{
+				aux.setTelefone(s);
+			}catch (NumberFormatException e){
+				e.printStackTrace();
+			}
 		}
 		
 		s = request.getParameter("dataNasc");
@@ -59,7 +71,11 @@ public class Instanciar {
 		s = request.getParameter("renda");
 
 		if (s != null && !s.isEmpty()) {
-			aux.setRenda(new BigDecimal(s));
+			try{
+				aux.setRenda(new BigDecimal(s));
+			} catch (NumberFormatException e){
+				e.printStackTrace();
+			}
 		}
 		
 		return aux;

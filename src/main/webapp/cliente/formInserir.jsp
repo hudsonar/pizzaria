@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO8859-1"
+	pageEncoding="ISO8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO8859-1">
 <title>Sistema Pizzaria</title>
 
 <!-- Bootstrap core CSS -->
@@ -31,7 +31,18 @@
 			<h1>Inserir novo Cliente</h1>
 		</div>
 		
-			<form name="myform" class="form-horizontal" action="<%=request.getContextPath()%>/cliente/inserir">
+			<form method="post" name="myform" class="form-horizontal" action="<%=request.getContextPath()%>/cliente/inserir">
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<ul>
+							<c:forEach items="${erros}" var="msg">
+								<li class="erro">${msg}</li>
+							</c:forEach>
+						</ul>
+					</div>					
+				</div>
+				
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="nome">Nome:</label>
 					<div class="col-sm-5">
@@ -59,7 +70,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="dataNasc">Data Nascimento:</label>
 					<div class="col-sm-5">
-						<input type="text" name="dataNasc" id="dataNasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.telefone}"/>" required="required" class="form-control"/>
+						<input type="text" name="dataNasc" id="dataNasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.dataNasc}"/>" required="required" class="form-control"/>
 					</div>					
 				</div>
 				<div class="form-group">

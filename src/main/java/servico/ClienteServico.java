@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.ClienteDao;
@@ -13,6 +14,38 @@ public class ClienteServico {
 
 	public ClienteServico() {
 		dao = DaoFactory.criarClienteDao();
+	}
+	
+	public void validar(Cliente x) throws ValidacaoException{
+		List<String> erros = new ArrayList<>();
+		
+		if(x.getNome()==null){
+			erros.add("Favor preencher o campo nome");
+		}
+		
+		if(x.getEmail()==null){
+			erros.add("Favor preencher o campo email");
+		}
+		
+		if(x.getCpf()==null){
+			erros.add("Favor preencher o campo CPF");
+		}
+		
+		if(x.getTelefone()==null){
+			erros.add("Favor preencher o campo telefone");
+		}
+		
+		if(x.getDataNasc()==null){
+			erros.add("Favor preencher o campo data de nascimento");
+		}
+		
+		if(x.getRenda()==null){
+			erros.add("Favor preencher o campo renda");
+		}
+		
+		if(!erros.isEmpty()){
+			throw new ValidacaoException("Erro de validação", erros);
+		}
 	}
 
 	public void inserir(Cliente x) throws ServicoException {
