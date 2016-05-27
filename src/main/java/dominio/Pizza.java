@@ -121,7 +121,7 @@ public class Pizza implements Serializable{
 		return true;
 	}
 
-	public BigDecimal valorTotal() {
+	public BigDecimal getValorTotal() {
 		BigDecimal soma = new BigDecimal("0.00");
 		for(ItemPizza x : itens){
 			soma = soma.add(x.getIngrediente().getPreco());
