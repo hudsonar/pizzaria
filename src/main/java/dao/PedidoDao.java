@@ -12,4 +12,5 @@ public interface PedidoDao {
 	public List<Pedido> buscarTodos();
 	
 	public List<Pedido> buscarPorData(Date dataMin,Date dataMax);
+	public List<Pedido> buscarPorCliente(int cliente);
 }

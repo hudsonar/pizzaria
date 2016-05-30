@@ -52,6 +52,14 @@ public class PedidoDaoImpl implements PedidoDao {
 		query.setParameter("p1", dataMin);
 		query.setParameter("p2", dataMax);
 		return query.getResultList();
-		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pedido> buscarPorCliente(int cliente){
+		String jpql = "SELECT x FROM Pedido x WHERE x.cliente = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", cliente);
+		return query.getResultList();
 	}
 }

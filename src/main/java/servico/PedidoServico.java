@@ -52,4 +52,7 @@ public class PedidoServico {
 		return dao.buscarPorData(dataMin, dataMax);
 	}
 	
+	public List<Pedido> buscarPorCliente(int cliente){
+		return dao.buscarPorCliente(cliente);
+	}
 }

@@ -28,11 +28,34 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Titulo da Pagina</h1>
+			<h1>Clientes</h1>
 		</div>
-		<p class="lead">Texto grande</p>
-		<p>Texto menor</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Email</th>
+					<th>Ação</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach items="${itens}" var="x">
+					<tr>
+						<td>${x.codCliente}</td>
+						<td>${x.nome}</td>
+						<td>${x.cpf}</td>
+						<td>${x.email}</td>
+						<td><a href="<%=request.getContextPath()%>/itempedido/pedidos?codCliente=${x.codCliente}" class="btn btn-primary btn-xs">Escolher</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
 	</div>
+
 
 	<jsp:include page="/resources/templates/footer.jsp"></jsp:include>
 

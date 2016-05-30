@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
@@ -71,4 +72,20 @@ public class ItemPedidoServico {
 		return dao.buscarTodos();
 	}
 	
+	public void validar(ItemPedido x) throws ValidacaoException{
+		List<String> erros = new ArrayList<>();
+		
+		if(x.getQuantidade()==null){
+			erros.add("Favor preencher o campo quantidade");
+		}
+		if(x.getPizza()==null){
+			erros.add("Favor preencher o campo pizza");
+		}
+		if(x.getPedido()==null){
+			erros.add("Favor selecionar um pedido");
+		}
+		if(!erros.isEmpty()){
+			throw new ValidacaoException("Erro de validação", erros);
+		}
+	}
 }

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset="ISO8859-1"
-	pageEncoding="ISO8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO8859-1">
+<meta charset="UTF-8">
 <title>Sistema Pizzaria</title>
 
 <!-- Bootstrap core CSS -->
@@ -28,10 +28,18 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Pagina Inicial</h1>
+			<h1>Detalhes do Pedido</h1>
 		</div>
-		<p class="lead">Controlador de vendas e estoque para Pizzaria</p>
-		<p></p>
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item">Código: </li>
+				<li class="list-group-item">Data: </li>
+				<li class="list-group-item">Valor total do pedido: <fmt:setLocale value="pt_BR" /><fmt:formatNumber type="currency" value="${item.valorTotal}" /></li>
+			</ul>
+		</div>
+		<div>
+			<a href="<%=request.getContextPath()%>/pedido/pesquisar" class="btn btn-success">Nova Pesquisa</a>
+		</div>
 	</div>
 
 	<jsp:include page="/resources/templates/footer.jsp"></jsp:include>
