@@ -54,12 +54,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${item.pedidos}" var="x">
+					<c:forEach items="${item.itens}" var="x">
 						<tr>
-							<td>${x.itempedido.pizza.codPizza}</td>
-							<td>${x.itempedido.pizza.nome}</td>
-							<td><fmt:setLocale value="pt_BR" /><fmt:formatNumber type="currency" value="${x.itempedido.pizza.valorTotal}" /></td>
-							<td>${x.itempedido.quantidade}</td>
+							<td>${x.pizza.codPizza}</td>
+							<td>${x.pizza.nome}</td>
+							<td><fmt:setLocale value="pt_BR" /><fmt:formatNumber type="currency" value="${x.pizza.valorTotal}" /></td>
+							<td>${x.quantidade}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

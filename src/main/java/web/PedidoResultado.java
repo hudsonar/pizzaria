@@ -25,11 +25,11 @@ public class PedidoResultado extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		PedidoServico ps = new PedidoServico();
-		String dataMin = request.getParameter("dataMin");
-		String dataMax = request.getParameter("dataMax");
+//		String dataMin = request.getParameter("dataMin");
+//		String dataMax = request.getParameter("dataMax");
 		List<Pedido> itens;
 		try {
-			itens = ps.buscarPorData(sdf.parse(dataMin), sdf.parse(dataMax));
+			itens = ps.buscarPorData(sdf.parse(request.getParameter("dataMin")), sdf.parse(request.getParameter("dataMax")));
 			request.setAttribute("itens", itens);
 			request.getRequestDispatcher(DESTINO).forward(request, response);
 		} catch (ParseException e) {
