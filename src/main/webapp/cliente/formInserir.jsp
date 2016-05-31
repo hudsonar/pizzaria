@@ -70,13 +70,13 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="dataNasc">Data Nascimento:</label>
 					<div class="col-sm-5">
-						<input type="date" name="dataNasc" id="dataNasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.dataNasc}"/>" required="required" class="form-control"/>
+						<input type="text" name="dataNasc" id="dataNasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.dataNasc}"/>" required="required" class="form-control"/>
 					</div>					
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="renda">Renda:</label>
 					<div class="col-sm-5">
-						<input type="number" name="renda" id="renda" value="${item.renda}" required="required" class="form-control"/>
+						<input type="text" name="renda" id="renda" value="${item.renda}" required="required" class="form-control"/>
 					</div>					
 				</div>
 				<div class="form-group">

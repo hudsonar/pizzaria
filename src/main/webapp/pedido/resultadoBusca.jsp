@@ -42,7 +42,7 @@
 				<c:forEach items="${itens}" var="x">
 					<tr>
 						<td>${x.codPedido}</td>
-						<td>${x.data}</td>
+						<td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${x.data}" /></td>
 						<td><a href="<%=request.getContextPath()%>/pedido/detalhes?cod=${x.codPedido}" class="btn btn-primary btn-xs">Detalhes</a></td>
 					</tr>
 				</c:forEach>

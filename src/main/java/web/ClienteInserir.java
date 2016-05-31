@@ -26,6 +26,8 @@ public class ClienteInserir extends HttpServlet {
 	
 		ClienteServico cs = new ClienteServico();
 		Cliente x = Instanciar.cliente(request);
+		
+		
 		try {
 			cs.validar(x);
 			cs.inserir(x);
